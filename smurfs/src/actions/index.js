@@ -13,8 +13,8 @@ export const getItems = () => (dispatch) => {
   axios
     .get("http://localhost:3333/smurfs")
     .then((response) => {
-      console.log("get", response);
-      dispatch({ type: GET_SUCCESS, payload: response });
+      console.log("get", response.data);
+      dispatch({ type: GET_SUCCESS, payload: response.data });
     })
     .catch((error) => {
       console.log("get", error);
@@ -27,8 +27,8 @@ export const postItems = (obj) => (dispatch) => {
   axios
     .post("http://localhost:3333/smurfs", obj)
     .then((response) => {
-      console.log("post", response);
-      dispatch({ type: POST_DATA, payload: response });
+      console.log("post", response.data);
+      dispatch({ type: POST_DATA, payload: response.data });
     })
     .catch((error) => {
       console.log("post", error);

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 
-const SmurfsForm = () => {
+import { connect } from "react-redux";
+import { postItems } from "../actions/index";
+
+const SmurfsForm = (props) => {
   //local state
   const [smurf, setSmurf] = useState({
     name: "",
@@ -18,6 +20,7 @@ const SmurfsForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     //reset inputs and axios post
+    props.postItems(smurf);
   };
 
   return (
@@ -62,4 +65,4 @@ const SmurfsForm = () => {
   );
 };
 
-export default connect(null, {})(SmurfsForm);
+export default connect(null, { postItems })(SmurfsForm);

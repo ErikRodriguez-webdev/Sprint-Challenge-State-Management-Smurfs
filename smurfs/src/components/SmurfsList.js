@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import SmurfsCard from "./SmurfsCard";
+
 import { connect } from "react-redux";
+import { getItems } from "../actions/index";
 
 const SmurfsList = (props) => {
+  console.log(props);
   useEffect(() => {
-    //axios get
+    props.getItems();
   }, []);
 
   return (
@@ -12,7 +15,7 @@ const SmurfsList = (props) => {
       {props.smurfsArray.map((each) => {
         return (
           <SmurfsCard
-            id={each.id}
+            key={each.id}
             name={each.name}
             age={each.age}
             height={each.height}
@@ -29,4 +32,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {})(SmurfsList);
+export default connect(mapStateToProps, { getItems })(SmurfsList);
